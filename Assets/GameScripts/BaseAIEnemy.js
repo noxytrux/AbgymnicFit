@@ -4,6 +4,8 @@ var nav : NavMeshAgent;
 var target : Transform;
 var maxChaseDistance : float = 10.0f;
 var maxVisiblity : float = 200.0f; 
+var attackRepeatTime : float = 1.0f;
+var maxVisibleAngle : float = 80.0f;
 
 private var distance : float = 100000.0;
 private var chaseTime : float = 2.0f;
@@ -27,6 +29,9 @@ public var runMaxAnimationSpeed : float = 1.0;
 public var otherAnimationSpeed : float = 1.0;
 
 private var _animation : Animation;
+private var lastAttack : float;
+private var canAttack : boolean = false;
+	
 
 enum EnemyState {
 	Idle = 0,
@@ -45,6 +50,7 @@ function Start () {
 	EyeRotatorVal = 0.0f;
 	nav.updatePosition = false;
 	_animation = GetComponent(Animation);
+	lastAttack = 0.0f;
 }
 
 function Update () {
@@ -55,7 +61,7 @@ function Update () {
 	
 	EyeRotatorVal += Time.deltaTime;
 	if(EyeRotatorVal > 1000) EyeRotatorVal = 0;
-	var rayAngle : float = Mathf.Sin(EyeRotatorVal) * 80.0f;
+	var rayAngle : float = Mathf.Sin(EyeRotatorVal) * maxVisibleAngle;
 	var rotation : Quaternion = Quaternion.Euler(0, rayAngle, 0);
 	var newForward : Vector3 = rotation * transform.forward;
 	var rayStart : Vector3 = transform.position + Vector3(0,0.4,0);
@@ -66,7 +72,7 @@ function Update () {
     	playerVisible = (hit.transform.gameObject.name == "baseMale") && (distance < maxVisiblity);
     }
 
-	if( (distance < maxChaseDistance) || playerVisible ){ //OR player saw by enemy
+	if( ((distance < maxChaseDistance) || playerVisible)  ){ //OR player saw by enemy
 		//keep chase time alive
 		chaseTime += Time.deltaTime;
 		
@@ -112,16 +118,19 @@ function Update () {
 	//	Debug.DrawRay(rayStart,newForward,Color.red,3);
 	}
 		
-	if(distance < 0.35) {
+	if(distance < 0.3) {
 		nav.updatePosition = false;
 		//about to stop
-		var canAttack : boolean = false;
 		
-		if (Physics.Raycast(rayStart, transform.forward, hit)){
-    		canAttack = (hit.transform.gameObject.name == "baseMale");
-    	}
-
-		if(canAttack){
+		if( Time.time-lastAttack > attackRepeatTime){
+			lastAttack=Time.time; 
+		
+			if ( Physics.Raycast(rayStart, transform.forward, hit) ){
+    			canAttack = (hit.transform.gameObject.name == "baseMale");
+    		}
+		}
+		
+		if(canAttack ){    
 			_enemyState = EnemyState.Attacking;
 		}	
 		else {

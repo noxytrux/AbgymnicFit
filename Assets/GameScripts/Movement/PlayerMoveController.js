@@ -215,7 +215,7 @@ function Update () {
 	
 	if (Input.GetButtonUp ("Jump") && (jumping==false))
 	{
-		verticalSpeed = 2.0;
+		verticalSpeed = 3.0;
 		jumping  = true;
 		_characterState = CharacterState.Jumping;
 	}
