@@ -6,6 +6,7 @@ public var character : Transform;
 
 // Private memeber data
 private var mainCamera : Camera;
+private var secondCamera : Camera;
 
 private var mainCameraTransform : Transform;
 
@@ -16,8 +17,8 @@ private var screenMovementRight : Vector3;
 var xSpeed = 150.0;
 var ySpeed = 120.0;
 
-var yMinLimit = -20;
-var yMaxLimit = 20;
+var yMinLimit = -60;
+var yMaxLimit = 60;
 
 private var x = 0.0;
 private var y = 0.0;
@@ -72,6 +73,20 @@ private var jumping = false;
 private var verticalSpeed = 0.0;
 private var speedMultipler = 1.0;
 
+private var isZoomed : boolean = false;
+var zoom : int = 20;
+var normal : int = 60;
+var smooth : float = 5;
+
+var canFire : boolean = false;
+var onlyOnce : boolean = false;
+
+////////////////////////////////////////////////
+
+var maximumHitPoints = 100.0;
+var hitPoints = 50.0;
+var hurtTexture : GUITexture;
+var regeneration : float = 1.0;
 
 function Awake () {		
 	motor.movementDirection = Vector2.zero;
@@ -79,6 +94,7 @@ function Awake () {
 	
 	// Set main camera
 	mainCamera = Camera.main;
+	secondCamera = GameObject.Find("SecondCamera").camera;
 	mainCameraTransform = mainCamera.transform;
 	
 	// Ensure we have character set
@@ -101,6 +117,13 @@ function Start () {
 }
 
 function Update () {
+
+	hurtTexture.color.a = (1 - (hitPoints/maximumHitPoints));
+	
+	if(hitPoints < maximumHitPoints){
+		hitPoints += Time.deltaTime * regeneration;
+		if(hitPoints > maximumHitPoints) hitPoints = maximumHitPoints;
+	}
 	
 	screenMovementSpace = Quaternion.Euler (0, mainCameraTransform.eulerAngles.y, 0);
 	screenMovementForward = screenMovementSpace * Vector3.forward;
@@ -131,6 +154,39 @@ function Update () {
 	mainCameraTransform.position = transform.position - motor.facingDirection*1.0f;
 	mainCameraTransform.position.y += 0.5;//0.01;
 	
+	if(Input.GetMouseButton(0)){
+		canFire = true;	
+		onlyOnce = true;
+	}
+	else{
+		canFire = false;
+		onlyOnce = true;
+	}
+	
+	if(onlyOnce){
+		onlyOnce = false;
+	
+		if(canFire){
+			SendMessage("OnStartFire",SendMessageOptions.DontRequireReceiver);		
+		}
+		else {
+			SendMessage("OnStopFire",SendMessageOptions.DontRequireReceiver);		
+		}
+	}
+	
+	 if(Input.GetMouseButton(1)){
+          isZoomed = true; 
+     }
+     else isZoomed = false;
+ 
+     if(isZoomed == true){
+          mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView,zoom,Time.deltaTime*smooth);
+          secondCamera.fieldOfView = Mathf.Lerp(secondCamera.fieldOfView,zoom,Time.deltaTime*smooth);
+     }
+     else{
+        mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView,normal,Time.deltaTime*smooth);
+        secondCamera.fieldOfView = Mathf.Lerp(secondCamera.fieldOfView,normal,Time.deltaTime*smooth);
+     }
 	
 	mainCameraTransform.forward = motor.facingDirection;
 	mainCameraTransform.Rotate(Vector3(1,0,0),y);
@@ -299,5 +355,7 @@ function isGrounded() : boolean {
 	return grounded;
 }
 
-
+function playerGetHit(damage: float){
+	Debug.Log("PLAYER GET HIT");
+}
 

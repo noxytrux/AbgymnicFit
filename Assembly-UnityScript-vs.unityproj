@@ -60,10 +60,15 @@
      <Compile Include="Assets\GameScripts\BaseAIEnemy.js" />
      <Compile Include="Assets\GameScripts\CameraFollow.js" />
      <Compile Include="Assets\GameScripts\CrossAirScript.js" />
+     <Compile Include="Assets\GameScripts\EnemyDamageCaster.js" />
+     <Compile Include="Assets\GameScripts\GUIFullscreen.js" />
      <Compile Include="Assets\GameScripts\Movement\CameraControl.js" />
      <Compile Include="Assets\GameScripts\Movement\FreeMovementMotor.js" />
      <Compile Include="Assets\GameScripts\Movement\MovementMotor.js" />
      <Compile Include="Assets\GameScripts\Movement\PlayerMoveController.js" />
+     <Compile Include="Assets\GameTextures\BulletLogic\PerFrameRaycast.js" />
+     <Compile Include="Assets\GameTextures\BulletLogic\SimpleBullet.js" />
+     <Compile Include="Assets\GameTextures\BulletLogic\SlowBulletFire.js" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
@@ -77,6 +82,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
+     <None Include="Assets\GameTextures\BulletLogic\Additive.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
@@ -137,6 +143,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
+     <None Include="Assets\GameTextures\VertexAlphaLit.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />

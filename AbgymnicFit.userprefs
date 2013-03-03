@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameScripts/CrossAirScript.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameScripts/BaseAIEnemy.js">
     <Files>
-      <File FileName="Assets/GameScripts/Movement/PlayerMoveController.js" Line="114" Column="46" />
-      <File FileName="Assets/GameScripts/CrossAirScript.js" Line="14" Column="30" />
+      <File FileName="Assets/GameTextures/BulletLogic/SlowBulletFire.js" Line="40" Column="2" />
+      <File FileName="Assets/GameScripts/BaseAIEnemy.js" Line="220" Column="33" />
+      <File FileName="Assets/GameScripts/Movement/PlayerMoveController.js" Line="163" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
