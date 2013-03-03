@@ -356,6 +356,7 @@ function isGrounded() : boolean {
 }
 
 function playerGetHit(damage: float){
-	Debug.Log("PLAYER GET HIT");
+	hitPoints -= damage;
+	if(hitPoints < 0) hitPoints = 0;
 }
 
