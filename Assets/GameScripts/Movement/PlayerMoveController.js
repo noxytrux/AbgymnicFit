@@ -228,7 +228,7 @@ function Update () {
 	if(_animation) {
 		if(_characterState == CharacterState.Jumping) 
 		{
-			Debug.Log("ANIMUJE SKOK");
+			//Debug.Log("ANIMUJE SKOK");
 			_animation[jumpPoseAnimation.name].speed = jumpAnimationSpeed;
 			_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
 			_animation.CrossFade(jumpPoseAnimation.name);

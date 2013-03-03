@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameScripts/BaseAIEnemy.js">
     <Files>
-      <File FileName="Assets/GameScripts/Movement/PlayerMoveController.js" Line="131" Column="79" />
-      <File FileName="Assets/GameScripts/Movement/FreeMovementMotor.js" Line="18" Column="24" />
-      <File FileName="Assets/GameScripts/BaseAIEnemy.js" Line="22" Column="4" />
+      <File FileName="Assets/GameScripts/Movement/PlayerMoveController.js" Line="238" Column="44" />
+      <File FileName="Assets/GameScripts/BaseAIEnemy.js" Line="115" Column="20" />
+      <File FileName="Assets/GameScripts/Movement/FreeMovementMotor.js" Line="26" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

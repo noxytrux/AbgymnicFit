@@ -19,7 +19,10 @@ class FreeMovementMotor extends MovementMotor {
 		
 			
 		rigidbody.AddForce (deltaVelocity * walkingSnappyness, ForceMode.Acceleration);
-		rigidbody.AddForce (Vector3(0,jumpValue,0), ForceMode.Impulse);
+		
+		if(jumpValue > 0) {
+			rigidbody.AddForce (Vector3(0,jumpValue,0), ForceMode.Impulse);
+		}
 		
 		// Setup player to face facingDirection, or if that is zero, then the movementDirection
 		var faceDir : Vector3 = facingDirection;

@@ -647,11 +647,12 @@ void  Update (){
 		NumberOfShadowsAnt = NumberOfShadows;
 	}
 	
-	if(IsAnimate)
+	if(IsAnimate) {
 		for(i = 0; i < NumberClouds; i++){
 			MyCloudParticle = (CloudParticle)MyCloudsParticles[i];
 			MyCloudParticle.AnimateCloud (AnimationVelocity);
 		}
+	}
 }
 
 // Manage the dissapearing of the partiles at the end of en Cubic Shape and move them to the begining again.
