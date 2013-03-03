@@ -1,0 +1,50 @@
+CloudsToy  V1.2
+
+Just drag the CloudsToy Mngr prefab to scene or you can drag the ClodsToy script to a GameObject
+to start from scracth, in that case you must assign the textures of the clouds manually.
+
+The first variable "Maximun Clouds" create all the clouds that CloudsToy is gonna manage, they could be visible or invisible depending on the
+"Clouds Num" variable.
+Ideally, once you fine tune your clouds to fit your needs, the Maximun Clouds and the Clouds Num variables, should have the same value 
+(all the clouds you see, are all the clouds the system is managing).
+
+The Repaint Clouds button is used because not all actions in the editor are gonna change all the clouds in realtime mode,  it could be too slow, depending on 
+the number of clouds that CloudsToy is managing (visible or invisible), so if you wanna ensure you how actually the clouds looks like, hit the Repain button.
+
+Soft Clouds is used to make sunrise type of clouds, very large a soft, almost transparent.
+
+Be aware that depending on the numer of clouds, the type of render, the detail of the cloud (number of particles that any cloud has), and the size
+width, height and depth, the FPS of the system may drop down dramatically. All this variables can be changed in the editor in realtime mode so
+be carefull with what values you use.
+
+All the clouds can have their own shadow (configurable by the user), to work properly the clouds are stored in the 31th layer, that is
+reserved by this application for their pourposes (basically ignore proyector layer number 31), so you can go to the layers window in Unity and 
+rename if you want the 31th layer using any name of your choice (CloudsToy maybe?).
+
+The procedural texture will be used in the clouds in realtime if you choose Cloud Type == PT1 (Procedural Texture 1).
+It uses a perlin code to generate de texture, so using the same values, when you run the application be aware that the generated will not be 
+never exactly the same. You can test it by clicking play button in Unity twice and you'll see the texture is different (sometimes completely different)
+using exactly the same texture parameters, that's his normal behavior not any extrange error.
+
+Notice that Clouds Textures works drawing all the corners of the textures in black (see at the textures Unity provide in his Standard Assest
+to create smoke, for example), you can do the same using the Halo parameters (Halo and Radius) and seeing the result in the Procedural
+texture editor window and in the clouds themselves in the scene mode (if you have choosen TypeCloud == PT1).
+
+CloudsToy expect you to use a 64x64 or 128x128 texture size only, using greater values will cause a slow execution of the cloud system (depending
+on your computer) and different behaviors on Halo functions. Use mixed values like 64x128, will cause weird textures, use that kind of texture sizes at your own risk!
+
+Hit 'Save Texture' once you have fine tune  your cloud texture. It will be saved at /Volumetric Clouds/Textures/Procedural. Do NOT erase that folder or CloudsToy
+will fail for sure. Once saved, use the new texture (Add and Blended) dragging them to the textures field in the clouds parameter. The blended textures
+are the same that Add ones but with an alpha channel (transparency) active. These are used depending on the type of render you wanna use
+(Bright --> Add/Realistic --> Blended)
+
+
+
+That's basically all the important stuff you have to know. Play with the cloud system a little bit and you'll see how fun is it.
+(NOTE : With the appropiatte skyBox the clouds will look much better).
+
+Jocyf 2010.
+Jocyf@jocyf.com
+
+Please read de licencing terms in my webpage 
+http://www.jocyf.com/utilsEnglih.html
